@@ -32,7 +32,7 @@
 							<tr>
                 <!-- BEGIN userPrivileges -->
 								<td>
-									<input type="checkbox" data-key="@value">
+									<input type="checkbox" data-key="{@value}">repo:yariplus/nodebb-plugin-modmin 
 								</td>
                 <!-- END userPrivileges -->
 							</tr>
@@ -63,7 +63,7 @@
 							<tr>
                 <!-- BEGIN groupPrivileges -->
 								<td>
-									<input type="checkbox" data-key="@value">
+									<input type="checkbox" data-key="{@value}">
 								</td>
                 <!-- END groupPrivileges -->
 							</tr>
