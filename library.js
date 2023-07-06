@@ -183,7 +183,7 @@ exports.load = function ({ app, middleware, router }, next) {
 
   // Config page.
   function renderConfig (req, res, next) {
-    console.log(Privileges, Privileges.userPrivilegeList);
+    console.log(Privileges, "======", Privileges.userPrivilegeList, "======", Privileges.privilegeLabels, "======", Privileges.groupPrivilegeList);
     let userPrivileges = Privileges.userPrivilegeList.slice()
     let PrivilegesLabels = Privileges.privilegeLabels.slice()
     let groupPrivileges = Privileges.groupPrivilegeList.slice()
