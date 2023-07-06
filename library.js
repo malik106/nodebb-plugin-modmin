@@ -705,7 +705,7 @@ function isAdminOrGroupAssigner (cid, uid, callback) {
     isAdmin(next) { User.isAdministrator(uid, next) },
     isGroupAssigner(next) {
       console.log(Helpers)
-      Helpers.isUserAllowedTo('assigngroups', uid, [cid], (err, isAllowed) => next(err, isAllowed ? isAllowed[0] : false))
+      Helpers.isUsersAllowedTo('assigngroups', uid, [cid], (err, isAllowed) => next(err, isAllowed ? isAllowed[0] : false))
     },
   }, (err, results) => callback(err, err ? false : results.isAdmin || results.isGroupAssigner))
 }
