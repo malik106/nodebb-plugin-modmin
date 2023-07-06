@@ -63,7 +63,7 @@ exports.load = function ({ app, middleware, router }, next) {
             isAdmin = _isAdmin
             if (isAdmin) return next(null, cids)
 
-            Helpers.isUserAllowedTo('modmin', uid, cids, (err, isAllowed) => {
+            Helpers.isUsersAllowedTo('modmin', uid, cids, (err, isAllowed) => {
               if (err) return next(err)
 
               cids = cids.filter((key, index) => isAllowed[index])
@@ -693,7 +693,7 @@ function isAdminOrModmin (cid, uid, callback) {
   async.parallel({
     isAdmin(next) { User.isAdministrator(uid, next) },
     isModmin(next) {
-      Helpers.isUserAllowedTo('modmin', uid, [cid], (err, isAllowed) => next(err, isAllowed ? isAllowed[0] : false))
+      Helpers.isUsersAllowedTo('modmin', uid, [cid], (err, isAllowed) => next(err, isAllowed ? isAllowed[0] : false))
     },
   }, (err, results) => {
     callback(err, err ? false : results.isAdmin || results.isModmin)
@@ -714,7 +714,7 @@ function isAdminOrCanDelete (cid, uid, callback) {
   async.parallel({
     isAdmin(next) { User.isAdministrator(uid, next) },
     canDelete(next) {
-      Helpers.isUserAllowedTo('deletecategories', uid, [cid], (err, isAllowed) => next(err, isAllowed ? isAllowed[0] : false))
+      Helpers.isUsersAllowedTo('deletecategories', uid, [cid], (err, isAllowed) => next(err, isAllowed ? isAllowed[0] : false))
     },
   }, (err, results) => callback(err, err ? false : results.isAdmin || results.canDelete))
 }
